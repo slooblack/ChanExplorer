@@ -1,5 +1,6 @@
 package co.wakarimasen.chanexplorer;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -108,15 +109,15 @@ public class PhoneHomeFragment extends Fragment  implements ViewPager.OnPageChan
 	}
 	
 	public void setCurrentPage(int item) {
-		if (((MainActivity)getActivity()).getSlidingMenu().isBehindShowing()) {
-			((MainActivity)getActivity()).getSlidingMenu().showAbove();
+		if (((MainActivity)getActivity()).getSlidingMenu().isShown()) {
+			((MainActivity)getActivity()).getSlidingMenu().showContent();
 		}
 		mViewPager.setCurrentItem(item, true);
 	}
 	
 	public void setCurrentPage(int item, boolean animate) {
-		if (((MainActivity)getActivity()).getSlidingMenu().isBehindShowing()) {
-			((MainActivity)getActivity()).getSlidingMenu().showAbove();
+		if (((MainActivity)getActivity()).getSlidingMenu().isShown()) {
+			((MainActivity)getActivity()).getSlidingMenu().showContent();
 		}
 		mViewPager.setCurrentItem(item, animate);
 	}
@@ -159,7 +160,8 @@ public class PhoneHomeFragment extends Fragment  implements ViewPager.OnPageChan
 	@Override
 	public void onPageScrolled(int arg0, float arg1, int arg2) {}
 	
-	@Override
+	@SuppressLint("NewApi")
+    @Override
 	public void onPageSelected(int position) {
 		((MainActivity)getActivity()).getSlidingMenu().setSlidingEnabled(position != 0);
 		((MainActivity)getActivity()).invalidateOptionsMenu();

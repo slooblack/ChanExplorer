@@ -143,14 +143,18 @@ public class Parser {
 						post.setFileDeleted(false);
 						post.setImage((getBetween("File: <a href=\"", "\"", boardHtml, boardBoyerHtml, postPos)));
 						if (fileInfo.indexOf("<span title=") == -1) {
-							post.setFilename((getBetween("<span>", "</span>", boardHtml, boardBoyerHtml, boardBoyerHtml.indexOf("<div class=\"file", postPos))));
+						   // post.setFilename("title");
+						    post.setFilename((getBetween("<span>", "</span>", boardHtml, boardBoyerHtml, boardBoyerHtml.indexOf("<div class=\"file", postPos))));
 						} else {
-							post.setFilename((getBetween("<span title=\"", "\"", boardHtml, boardBoyerHtml, boardBoyerHtml.indexOf("<div class=\"file", postPos))));
+						//	post.setFilename("title");
+						    post.setFilename((getBetween("<span title=\"", "\"", boardHtml, boardBoyerHtml, boardBoyerHtml.indexOf("<div class=\"file", postPos))));
 						}
 						post.setSpoiler((fileInfo.indexOf("Spoiler Image") != -1));
-						post.setFilesize(getBetween("</a>-(", ",", fileInfo, 0));
+						post.setFilesize(getBetween("</a>-(", "\">File:", fileInfo, 1));
 						post.setThumbnail((getBetween("<img src=\"", "\"", boardHtml, boardBoyerHtml, boardBoyerHtml.indexOf("<div class=\"file", postPos))));
+						//post.setThHeight(2);
 						post.setThHeight(parseInt(getBetween("height: ", "px", boardHtml, boardBoyerHtml, boardBoyerHtml.indexOf("<div class=\"file", postPos))));
+						//post.setThWidth(3);
 						post.setThWidth(parseInt(getBetween("width: ", "px", boardHtml, boardBoyerHtml, boardBoyerHtml.indexOf("<div class=\"file", postPos))));
 						Matcher m1 = sz_match.matcher(fileInfo);
 						if (m1.find()) {

@@ -41,8 +41,8 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import co.wakarimasen.chanexplorer.R;
-import com.slidingmenu.lib.SlidingMenu;
-import com.slidingmenu.lib.app.SlidingFragmentActivity;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import com.jeremyfeinstein.slidingmenu.lib.app.SlidingFragmentActivity;
 
 @SuppressLint("NewApi")
 public class MainActivity extends SlidingFragmentActivity {
@@ -180,8 +180,8 @@ public class MainActivity extends SlidingFragmentActivity {
 			} else {
 				mNewPostView.setImage("");
 			}
-			if (!getSlidingMenu().isBehindShowing()) {
-				getSlidingMenu().showBehind();
+			if (!getSlidingMenu().isShown()) {
+				getSlidingMenu().showContent();
 			}
 			break;
 		case REQ_CODE_PREFS:			
@@ -236,7 +236,7 @@ public class MainActivity extends SlidingFragmentActivity {
 			mNewPostView.setNewPost(cp.getBoard(), cp.getThreadId(), np);
 			cp.setNewPost(np);
 			mNewPostView.refreshCaptcha();
-			getSlidingMenu().showBehind();
+			getSlidingMenu().showContent();
 		} else if (intent.getAction().equals(Intent.ACTION_VIEW)) {
 			Uri data = getIntent().getData();
 			if (data == null) {
@@ -358,8 +358,8 @@ public class MainActivity extends SlidingFragmentActivity {
 	@Override
 	public void onPause() {
 		super.onPause();
-		if (getSlidingMenu().isBehindShowing()) {
-			getSlidingMenu().showAbove();
+		if (getSlidingMenu().isShown()) {
+			getSlidingMenu().showContent();
 		}
 	}
 
@@ -375,8 +375,8 @@ public class MainActivity extends SlidingFragmentActivity {
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
-		if (getSlidingMenu().isBehindShowing()) {
-			getSlidingMenu().showAbove();
+		if (getSlidingMenu().isShown()) {
+			getSlidingMenu().showContent();
 		}
 
 	}

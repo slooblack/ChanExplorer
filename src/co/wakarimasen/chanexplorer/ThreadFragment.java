@@ -978,7 +978,7 @@ public class ThreadFragment extends ListFragment implements ChanPage,
 				((MainActivity) getActivity()).mNewPostView.refreshCaptcha();
 			} else if (error[0].equals(captcha_finished)) {
 				((MainActivity) getActivity()).dismissProgressDialog();
-				((MainActivity) getActivity()).getSlidingMenu().showAbove();
+				((MainActivity) getActivity()).getSlidingMenu().showContent();
 				mNewPost.reset();
 
 				CharSequence tickerText = "Uploading post to " + getTitle(); // ticker-text
