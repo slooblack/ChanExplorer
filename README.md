@@ -18,7 +18,7 @@ ChanExplorer was built with Eclispe and targets Gingerbread (API Level 10).
 + [Android v4 Compat](http://developer.android.com/tools/support-library/setup.html)
 + [Android v7 Compat](http://developer.android.com/tools/support-library/setup.html)
 + [ActionBarSherlock (4.1.0)](http://actionbarsherlock.com/)
-+ [SlidingMenu (7343c3cdc734f1aaf373c3a0cca8ed45fca21e6a)](http://github.com/jfeinstein10/SlidingMenu)
++ [SlidingMenu](http://github.com/jfeinstein10/SlidingMenu)
 + [Google Guava](https://code.google.com/p/guava-libraries/)
 
 ### Build (Eclispe + ADT)
@@ -28,16 +28,16 @@ Assuming you are already set up with Android:
 Eclipse Build Instructions
 
 1. Clone ChanExplorer `git clone git@github.com:wakarimasenco/ChanExplorer.git`
-1. Import ChanExplorer into your Workspace as “Existing Android Code into Workspace” (File > Import > Android > Existing Android Code into Workspace)
-1. Git Clone `ActionBarSherlock@4.1.0` and `SlidingMenu@7343c3cdc73`. (ABS 4.1.0 can be downloaded here - [http://actionbarsherlock.com/download](http://actionbarsherlock.com/download), and for SlidingMenu you can run `git clone https://github.com/jfeinstein10/SlidingMenu && git checkout 7343c3cdc73`
-1. In SlidingMenu, delete the file `/src/com/slidingmenu/lib/app/SlidingMapActivity.java`
-1. In SlidingMenu, in the file `/src/com/slidingmenu/lib/app/SlidingFragmentActivity.java` replace `extends FragmentActivity implements SlidingActivityBase` with `extends com.actionbarsherlock.app.SherlockFragmentActivity implements SlidingActivityBase`
-1. Import the two projects into Eclipse using the same method as 2.
-1. Right Click the SlidingMenu project > Properties > Android > Library > Add
-1. Add the ActionBarSherlock project
-1. Right Click the ChanExplorer project > Properties > Android > Library > Add
-1. Add both the ActionBarSherlock and ChanExplorer projects.
-1. Use `ndk-build` to build the native libraries. `cd {chanexplorer}/jni && ndk-build` on OSX and Linux.
+2. Import ChanExplorer into your Workspace as “Existing Android Code into Workspace” (File > Import > Android > Existing Android Code into Workspace)
+3. Git Clone `ActionBarSherlock@4.1.0` and `SlidingMenu@7343c3cdc73`. (ABS 4.1.0 can be downloaded here - [http://actionbarsherlock.com/download](http://actionbarsherlock.com/download), and for SlidingMenu you can run `git clone https://github.com/jfeinstein10/SlidingMenu`
+4. In SlidingMenu, delete the file `/src/com/slidingmenu/lib/app/SlidingMapActivity.java`
+5. In SlidingMenu, in the file `/src/com/slidingmenu/lib/app/SlidingFragmentActivity.java` replace `extends FragmentActivity implements SlidingActivityBase` with `extends com.actionbarsherlock.app.SherlockFragmentActivity implements SlidingActivityBase`
+6. Import the two projects into Eclipse using the same method as 2.
+7. Right Click the SlidingMenu project > Properties > Android > Library > Add
+8. Add the ActionBarSherlock project
+9. Right Click the ChanExplorer project > Properties > Android > Library > Add
+10. Add both the ActionBarSherlock and ChanExplorer projects.
+11. Use `ndk-build` to build the native libraries. `cd {chanexplorer}/jni && ndk-build` on OSX and Linux.
 
 You can then plug in your Android device and build a debug apk.
 
